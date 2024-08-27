@@ -10,8 +10,11 @@ const Navbar = () => {
     { label: "Mine", href: "/user", icon: <IoPersonSharp size={20} /> },
   ];
   return (
-    <nav className="p-4 border-b mb-5">
-      <Container>
+    <Container>
+      <nav
+        className="p-4 border-t mt-5"
+        style={{ position: "fixed", bottom: 0, width: "100%" }}
+      >
         <Flex align="center" gap="6">
           <CgDetailsMore className="mr-3" size={20} />
           <ul className="flex space-x-6">
@@ -22,8 +25,8 @@ const Navbar = () => {
             ))}
           </ul>
         </Flex>
-      </Container>
-    </nav>
+      </nav>
+    </Container>
   );
 };
 
