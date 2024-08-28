@@ -14,14 +14,14 @@ datasource db {
 }
 
 model Task {
-  id Int @id @default(autoincrement())
-  title String @db.VarChar(255)
-  status Status @default(OPEN)
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(255)
+  status    Status   @default(INCOMPLETE)
   createdAt DateTime @default(now())
 }
 
 enum Status {
-  OPEN
+  INCOMPLETE
   IN_PROGRESS
-  CLOSED
+  COMPLETED
 }
