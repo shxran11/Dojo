@@ -1,7 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Dialog, Flex, Text, TextArea } from "@radix-ui/themes";
+import {
+  Button,
+  Dialog,
+  Flex,
+  Spinner,
+  Text,
+  TextArea,
+} from "@radix-ui/themes";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -21,11 +28,17 @@ const NewTaskButton = () => {
     resolver: zodResolver(ValidationSchema),
   });
   const [open, setOpen] = useState(false);
+  const [isSubmitting, setSubmitting] = useState(false);
 
   const saveTask = async (data: TaskForm) => {
-    await axios.post("/api/tasks", data);
-    reset();
-    setOpen(false);
+    try {
+      setSubmitting(true);
+      await axios.post("/api/tasks", data);
+      reset();
+      setOpen(false);
+    } catch (error) {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -56,7 +69,9 @@ const NewTaskButton = () => {
                 Cancel
               </Button>
             </Dialog.Close>
-            <Button type="submit">Save</Button>
+            <Button disabled={isSubmitting} type="submit">
+              Save {isSubmitting && <Spinner />}
+            </Button>
           </Flex>
         </form>
       </Dialog.Content>
