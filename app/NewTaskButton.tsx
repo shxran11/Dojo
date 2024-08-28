@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ValidationSchema } from "./ValidationSchema";
 import { z } from "zod";
+import ErrorMessage from "./components/ErrorMessage";
 
 type TaskForm = z.infer<typeof ValidationSchema>;
 
@@ -46,11 +47,7 @@ const NewTaskButton = () => {
                 placeholder="Create new task..."
                 {...register("title")}
               />
-              {errors.title && (
-                <Text size="2" color="red">
-                  {errors.title.message}
-                </Text>
-              )}
+              <ErrorMessage>{errors.title?.message}</ErrorMessage>
             </label>
           </Flex>
           <Flex gap="3" mt="4" justify="end">
