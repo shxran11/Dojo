@@ -44,7 +44,9 @@ const NewTaskButton = () => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>
-        <Button onClick={() => setOpen(true)}>Add new task</Button>
+        <Button mb="5" onClick={() => setOpen(true)}>
+          Add new task
+        </Button>
       </Dialog.Trigger>
       <Dialog.Content maxWidth="450px">
         <form onSubmit={handleSubmit(saveTask)}>
