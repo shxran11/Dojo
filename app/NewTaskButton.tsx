@@ -5,6 +5,7 @@ import {
   Button,
   Dialog,
   Flex,
+  Select,
   Spinner,
   Text,
   TextArea,
@@ -15,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { ValidationSchema } from "./ValidationSchema";
 import { z } from "zod";
 import ErrorMessage from "./components/ErrorMessage";
+import { Category } from "@prisma/client";
 
 type TaskForm = z.infer<typeof ValidationSchema>;
 
@@ -23,6 +25,7 @@ const NewTaskButton = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<TaskForm>({
     resolver: zodResolver(ValidationSchema),
@@ -41,10 +44,18 @@ const NewTaskButton = () => {
     }
   };
 
+  const categories: { label: string; value: Category }[] = [
+    { label: "All", value: "ALL" },
+    { label: "Work", value: "WORK" },
+    { label: "Personal", value: "PERSONAL" },
+    { label: "Birthday", value: "BIRTHDAY" },
+    { label: "Wishlist", value: "WISHLIST" },
+  ];
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>
-        <Button mb="5" onClick={() => setOpen(true)}>
+        <Button mb="4" onClick={() => setOpen(true)}>
           Add new task
         </Button>
       </Dialog.Trigger>
@@ -55,6 +66,18 @@ const NewTaskButton = () => {
             Enter the details of the task you want to add.
           </Dialog.Description>
           <Flex direction="column" gap="3">
+            <Select.Root
+              onValueChange={(value) => setValue("category", value as Category)}
+            >
+              <Select.Trigger placeholder="Select category..." />
+              <Select.Content>
+                {categories.map((category) => (
+                  <Select.Item key={category.value} value={category.value}>
+                    {category.label}
+                  </Select.Item>
+                ))}
+              </Select.Content>
+            </Select.Root>
             <label>
               <TextArea
                 size="2"

@@ -1,15 +1,5 @@
-import {
-  Popover,
-  Button,
-  Flex,
-  Avatar,
-  Box,
-  TextArea,
-  Checkbox,
-  Text,
-} from "@radix-ui/themes";
+import { Button, Popover } from "@radix-ui/themes";
 import { CiFlag1 } from "react-icons/ci";
-import React from "react";
 
 const TaskInfo = () => {
   return (
