@@ -1,6 +1,7 @@
 import { Category, Status } from "@prisma/client";
 import { Badge, Button, Flex, Popover, Text } from "@radix-ui/themes";
 import { CiFlag1 } from "react-icons/ci";
+import { AiOutlineDelete } from "react-icons/ai";
 import TaskStatusBadge from "./components/TaskStatusBadge";
 
 interface Props {
@@ -36,9 +37,16 @@ const TaskInfo = async ({ status, category, createdAt }: Props) => {
             <Badge color="gray">{createdAt.toLocaleString()}</Badge>
           </Flex>
         </Flex>
-        <Popover.Close>
-          <Button size="1">Close</Button>
-        </Popover.Close>
+        <Flex align="center" justify="between">
+          <Popover.Close>
+            <Button size="1">Close</Button>
+          </Popover.Close>
+          <Popover.Close>
+            <Button size="1" color="red">
+              {<AiOutlineDelete />} Delete task
+            </Button>
+          </Popover.Close>
+        </Flex>
       </Popover.Content>
     </Popover.Root>
   );
