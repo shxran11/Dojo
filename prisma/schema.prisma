@@ -16,7 +16,7 @@ datasource db {
 model Task {
   id        Int      @id @default(autoincrement())
   title     String   @db.VarChar(255)
-  category  Category @default(ALL)
+  category  Category @default(NONE)
   status    Status   @default(INCOMPLETE)
   createdAt DateTime @default(now())
 }
@@ -28,7 +28,7 @@ enum Status {
 }
 
 enum Category {
-  ALL
+  NONE
   WORK
   PERSONAL
   WISHLIST

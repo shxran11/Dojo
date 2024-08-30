@@ -18,7 +18,7 @@ const TaskInfo = async ({ status, category, createdAt }: Props) => {
         </Button>
       </Popover.Trigger>
       <Popover.Content
-        width="360px"
+        width="300px"
         style={{ backgroundColor: "var(--accent-2)" }}
       >
         <Text size="5">Task Details</Text>
