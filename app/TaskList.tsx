@@ -15,6 +15,7 @@ const TaskList = async () => {
           <Flex justify="between" align="center">
             {task.title}
             <TaskInfo
+              id={task.id}
               status={task.status}
               category={task.category}
               createdAt={task.createdAt}

@@ -3,14 +3,16 @@ import { Badge, Button, Flex, Popover, Text } from "@radix-ui/themes";
 import { CiFlag1 } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
 import TaskStatusBadge from "./components/TaskStatusBadge";
+import DeleteTaskButton from "./DeleteTaskButton";
 
 interface Props {
+  id: number;
   status: Status;
   category: Category;
   createdAt: Date;
 }
 
-const TaskInfo = async ({ status, category, createdAt }: Props) => {
+const TaskInfo = async ({ id, status, category, createdAt }: Props) => {
   return (
     <Popover.Root>
       <Popover.Trigger>
@@ -42,9 +44,7 @@ const TaskInfo = async ({ status, category, createdAt }: Props) => {
             <Button size="1">Close</Button>
           </Popover.Close>
           <Popover.Close>
-            <Button size="1" color="red">
-              {<AiOutlineDelete />} Delete task
-            </Button>
+            <DeleteTaskButton taskId={id} />
           </Popover.Close>
         </Flex>
       </Popover.Content>
