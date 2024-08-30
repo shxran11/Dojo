@@ -14,7 +14,11 @@ const TaskList = async () => {
         >
           <Flex justify="between" align="center">
             {task.title}
-            <TaskInfo />
+            <TaskInfo
+              status={task.status}
+              category={task.category}
+              createdAt={task.createdAt}
+            />
           </Flex>
         </Card>
       ))}
