@@ -17,7 +17,10 @@ const TaskInfo = async ({ status, category, createdAt }: Props) => {
           <CiFlag1 size="18" />
         </Button>
       </Popover.Trigger>
-      <Popover.Content width="360px">
+      <Popover.Content
+        width="360px"
+        style={{ backgroundColor: "var(--accent-2)" }}
+      >
         <Text size="5">Task Details</Text>
         <Flex direction="column" gap="3" mb="3" mt="3">
           <Flex align="center" gap="3" pb="2" className="border-b">

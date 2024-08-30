@@ -10,7 +10,7 @@ const TaskList = async () => {
         <Card
           key={task.id}
           mb="4"
-          style={{ backgroundColor: "var(--accent-a2)" }}
+          style={{ backgroundColor: "var(--accent-8)" }}
         >
           <Flex justify="between" align="center">
             {task.title}
