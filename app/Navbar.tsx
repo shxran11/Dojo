@@ -12,10 +12,10 @@ const Navbar = () => {
   return (
     <Container>
       <nav
-        className="p-4 border-t mt-5"
+        className="p-4 border-t mt-5 mx-auto"
         style={{ position: "fixed", bottom: 0, width: "100%" }}
       >
-        <Flex align="center" gap="6">
+        <Flex align="center" justify="start" gap="6">
           <CgDetailsMore className="mr-3" size={20} />
           <ul className="flex space-x-6">
             {links.map((link) => (

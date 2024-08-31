@@ -9,6 +9,7 @@ import {
   Spinner,
   Text,
   TextArea,
+  Tooltip,
 } from "@radix-ui/themes";
 import axios from "axios";
 import { useState } from "react";
@@ -18,6 +19,7 @@ import { z } from "zod";
 import ErrorMessage from "./components/ErrorMessage";
 import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import { PlusIcon } from "@radix-ui/react-icons";
 
 type TaskForm = z.infer<typeof ValidationSchema>;
 
@@ -58,9 +60,17 @@ const NewTaskButton = () => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>
-        <Button mb="4" onClick={() => setOpen(true)}>
-          Add new task
-        </Button>
+        <Tooltip
+          content="Add new task"
+          style={{ backgroundColor: "var(--accent-12)" }}
+        >
+          <button
+            onClick={() => setOpen(true)}
+            className="fixed bottom-3 right-4 bg-blue-400 text-white px-4 py-2 rounded-full shadow-lg"
+          >
+            <PlusIcon />
+          </button>
+        </Tooltip>
       </Dialog.Trigger>
       <Dialog.Content
         maxWidth="450px"
