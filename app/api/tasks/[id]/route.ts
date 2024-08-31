@@ -1,6 +1,30 @@
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const body = await request.json();
+
+  const task = await prisma.task.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+
+  if (!task) {
+    return NextResponse.json({ error: "Invalid task" }, { status: 404 });
+  }
+
+  const updatedTask = await prisma.task.update({
+    where: { id: task.id },
+    data: {
+      status: body.status,
+    },
+  });
+
+  return NextResponse.json(updatedTask, { status: 200 });
+}
+
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
