@@ -2,9 +2,9 @@ import prisma from "@/prisma/client";
 import { Card, Flex } from "@radix-ui/themes";
 import CheckBox from "./components/CheckBox";
 import TaskInfo from "./TaskInfo";
+import { Task } from "@prisma/client";
 
-const TaskList = async () => {
-  const tasks = await prisma.task.findMany();
+const TaskList = async ({ tasks }: { tasks: Task[] }) => {
   return (
     <div>
       {tasks.map((task) => (
