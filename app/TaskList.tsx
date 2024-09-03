@@ -1,4 +1,4 @@
-import { Card, Flex } from "@radix-ui/themes";
+import { Card, Flex, Text } from "@radix-ui/themes";
 import CheckBox from "./components/CheckBox";
 import TaskInfo from "./TaskInfo";
 import { Task } from "@prisma/client";
@@ -15,7 +15,9 @@ const TaskList = async ({ tasks }: { tasks: Task[] }) => {
           <Flex justify="between" align="center">
             <Flex align="center" gap="2" mr="3">
               <CheckBox taskId={task.id} currentStatus={task.status} />
-              {task.title}
+              <Text size="2" color="sky">
+                {task.title}
+              </Text>
             </Flex>
             <TaskInfo
               id={task.id}

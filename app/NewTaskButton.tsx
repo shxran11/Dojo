@@ -1,25 +1,25 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Category } from "@prisma/client";
 import {
   Button,
+  Container,
   Dialog,
   Flex,
   Select,
   Spinner,
-  Text,
   TextArea,
   Tooltip,
 } from "@radix-ui/themes";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ValidationSchema } from "./ValidationSchema";
+import { FaPlus } from "react-icons/fa6";
 import { z } from "zod";
 import ErrorMessage from "./components/ErrorMessage";
-import { Category } from "@prisma/client";
-import { useRouter } from "next/navigation";
-import { FaPlus } from "react-icons/fa6";
+import { ValidationSchema } from "./ValidationSchema";
 
 type TaskForm = z.infer<typeof ValidationSchema>;
 
@@ -58,69 +58,75 @@ const NewTaskButton = () => {
   ];
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger>
-        <Tooltip
-          content="Add new task"
-          style={{ backgroundColor: "var(--accent-12)" }}
-        >
-          <button
-            onClick={() => setOpen(true)}
-            className="fixed size-12 bottom-16 right-4 bg-blue-400 text-white px-4 py-2 rounded-full shadow-lg"
+    <Container
+      style={{ position: "relative", maxWidth: "1024px", width: "100%" }}
+    >
+      <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Trigger>
+          <Tooltip
+            content="Add new task"
+            style={{ backgroundColor: "var(--accent-12)" }}
           >
-            <FaPlus />
-          </button>
-        </Tooltip>
-      </Dialog.Trigger>
-      <Dialog.Content
-        maxWidth="450px"
-        style={{ backgroundColor: "var(--accent-2)" }}
-      >
-        <form onSubmit={handleSubmit(saveTask)}>
-          <Dialog.Title>Add new task</Dialog.Title>
-          <Dialog.Description mb="3" size="2">
-            Enter the details of the task you want to add.
-          </Dialog.Description>
-          <Flex direction="column" gap="3">
-            <Select.Root
-              onValueChange={(value) => setValue("category", value as Category)}
+            <button
+              onClick={() => setOpen(true)}
+              className="size-12 bg-blue-400 text-white px-4 py-2 rounded-full shadow-lg fixed bottom-16 right-6 sm:right-6 md:right-14 xl:right-52"
             >
-              <Select.Trigger
-                placeholder="Select category..."
-                style={{ backgroundColor: "var(--accent-3)" }}
-              />
-              <Select.Content>
-                {categories.map((category) => (
-                  <Select.Item key={category.value} value={category.value}>
-                    {category.label}
-                  </Select.Item>
-                ))}
-              </Select.Content>
-            </Select.Root>
-            <label>
-              <TextArea
-                size="2"
-                mb="1"
-                placeholder="Create new task..."
-                {...register("title")}
-                style={{ backgroundColor: "var(--accent-3)" }}
-              />
-              <ErrorMessage>{errors.title?.message}</ErrorMessage>
-            </label>
-          </Flex>
-          <Flex gap="3" mt="4" justify="end">
-            <Dialog.Close>
-              <Button variant="soft" color="gray" onClick={() => reset()}>
-                Cancel
+              <FaPlus />
+            </button>
+          </Tooltip>
+        </Dialog.Trigger>
+        <Dialog.Content
+          maxWidth="450px"
+          style={{ backgroundColor: "var(--accent-2)" }}
+        >
+          <form onSubmit={handleSubmit(saveTask)}>
+            <Dialog.Title>Add new task</Dialog.Title>
+            <Dialog.Description mb="3" size="2">
+              Enter the details of the task you want to add.
+            </Dialog.Description>
+            <Flex direction="column" gap="3">
+              <Select.Root
+                onValueChange={(value) =>
+                  setValue("category", value as Category)
+                }
+              >
+                <Select.Trigger
+                  placeholder="Select category..."
+                  style={{ backgroundColor: "var(--accent-3)" }}
+                />
+                <Select.Content>
+                  {categories.map((category) => (
+                    <Select.Item key={category.value} value={category.value}>
+                      {category.label}
+                    </Select.Item>
+                  ))}
+                </Select.Content>
+              </Select.Root>
+              <label>
+                <TextArea
+                  size="2"
+                  mb="1"
+                  placeholder="Create new task..."
+                  {...register("title")}
+                  style={{ backgroundColor: "var(--accent-3)" }}
+                />
+                <ErrorMessage>{errors.title?.message}</ErrorMessage>
+              </label>
+            </Flex>
+            <Flex gap="3" mt="4" justify="end">
+              <Dialog.Close>
+                <Button variant="soft" color="gray" onClick={() => reset()}>
+                  Cancel
+                </Button>
+              </Dialog.Close>
+              <Button disabled={isSubmitting} type="submit">
+                Save {isSubmitting && <Spinner />}
               </Button>
-            </Dialog.Close>
-            <Button disabled={isSubmitting} type="submit">
-              Save {isSubmitting && <Spinner />}
-            </Button>
-          </Flex>
-        </form>
-      </Dialog.Content>
-    </Dialog.Root>
+            </Flex>
+          </form>
+        </Dialog.Content>
+      </Dialog.Root>
+    </Container>
   );
 };
 
