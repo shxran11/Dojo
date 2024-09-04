@@ -24,27 +24,37 @@ const Navbar = () => {
         style={{ backgroundColor: "var(--accent-12)" }}
       >
         <Flex align="center" justify="between" gap="6">
-          <Link href="/">
-            <FcTodoList className="w-6 h-6" />
-          </Link>
-          <Link href="/tasks">
-            <Pencil2Icon className="w-5 h-5" />
-          </Link>
           {status === "authenticated" && (
-            <Link href="/user">
-              <Avatar
-                src={session.user.image}
-                fallback="?"
-                radius="full"
-                size="2"
-                referrerPolicy="no-referrer"
-              />
-            </Link>
+            <>
+              <Link href="/tasks">
+                <FcTodoList className="w-6 h-6" />
+              </Link>
+              <Link href="/tasks">
+                <Pencil2Icon className="w-5 h-5" />
+              </Link>
+              <Link href="/user">
+                <Avatar
+                  src={session.user!.image!}
+                  fallback="?"
+                  radius="full"
+                  size="2"
+                  referrerPolicy="no-referrer"
+                />
+              </Link>
+            </>
           )}
           {status === "unauthenticated" && (
-            <Link href="/api/auth/signin">
-              <IoPersonSharp />
-            </Link>
+            <>
+              <Link href="/">
+                <FcTodoList className="w-6 h-6" />
+              </Link>
+              <Link href="/api/auth/signin">
+                <Pencil2Icon className="w-5 h-5" />
+              </Link>
+              <Link href="/api/auth/signin">
+                <IoPersonSharp />
+              </Link>
+            </>
           )}
           {status === "loading" && <Spinner />}
         </Flex>
