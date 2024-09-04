@@ -1,5 +1,7 @@
+import PersonalInfo from "./PersonalInfo";
+
 const UserPage = () => {
-  return <div>Hello, User</div>;
+  return <PersonalInfo />;
 };
 
 export default UserPage;
