@@ -10,7 +10,6 @@ import { useSession } from "next-auth/react";
 const Navbar = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return <Spinner />;
   return (
     <Container
       style={{
@@ -32,13 +31,12 @@ const Navbar = () => {
             <Pencil2Icon className="w-5 h-5" />
           </Link>
           {status === "authenticated" && (
-            <Link href="/user">{session.user.name}</Link>
+            <Link href="/api/auth/signout">Log out</Link>
           )}
           {status === "unauthenticated" && (
-            <Link href="/api/auth/signin">
-              <IoPersonSharp className="w-5 h-5" />
-            </Link>
+            <Link href="/api/auth/signin">Login</Link>
           )}
+          {status === "loading" && <Spinner />}
         </Flex>
       </nav>
     </Container>
