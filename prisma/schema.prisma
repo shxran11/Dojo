@@ -14,11 +14,12 @@ datasource db {
 }
 
 model Task {
-  id        Int       @id @default(autoincrement())
-  title     String    @db.VarChar(255)
-  category  Category?
-  status    Status    @default(INCOMPLETE)
-  createdAt DateTime  @default(now())
+  id          Int       @id @default(autoincrement())
+  title       String    @db.VarChar(255)
+  category    Category?
+  status      Status    @default(INCOMPLETE)
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
 }
 
 enum Status {

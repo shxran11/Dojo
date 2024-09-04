@@ -19,6 +19,7 @@ export async function PATCH(
     where: { id: task.id },
     data: {
       status: body.status,
+      completedAt: body.status === "COMPLETED" ? new Date() : null,
     },
   });
 
