@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link href="/user">{session.user.name}</Link>
           )}
           {status === "unauthenticated" && (
-            <Link href="/auth/signin">
+            <Link href="/api/auth/signin">
               <IoPersonSharp className="w-5 h-5" />
             </Link>
           )}

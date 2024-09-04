@@ -1,8 +1,7 @@
 import React from "react";
-import SignInPage from "./auth/signin/page";
 
 const LandingPage = () => {
-  return <SignInPage />;
+  return <div>Landing</div>;
 };
 
 export default LandingPage;
