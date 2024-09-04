@@ -50,7 +50,7 @@ const CategoryFilter = () => {
               mb="4"
               onClick={() => {
                 const query = constructQuery(category.value);
-                router.push(`/${query}`);
+                router.push(`/tasks/${query}`);
               }}
             >
               {category.label}

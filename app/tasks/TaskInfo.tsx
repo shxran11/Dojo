@@ -2,13 +2,13 @@ import { Category, Status } from "@prisma/client";
 import { Badge, Button, Flex, Popover, Text } from "@radix-ui/themes";
 import { CiFlag1 } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
-import TaskStatusBadge from "./components/TaskStatusBadge";
+import TaskStatusBadge from "../components/TaskStatusBadge";
 import DeleteTaskButton from "./DeleteTaskButton";
 
 interface Props {
   id: number;
   status: Status;
-  category: Category;
+  category: Category | null;
   createdAt: Date;
 }
 

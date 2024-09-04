@@ -18,8 +18,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaPlus } from "react-icons/fa6";
 import { z } from "zod";
-import ErrorMessage from "./components/ErrorMessage";
-import { ValidationSchema } from "./ValidationSchema";
+import ErrorMessage from "../components/ErrorMessage";
+import { ValidationSchema } from "../ValidationSchema";
 
 type TaskForm = z.infer<typeof ValidationSchema>;
 

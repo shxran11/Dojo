@@ -1,6 +1,6 @@
 import { Card, Flex, Text } from "@radix-ui/themes";
-import CheckBox from "./components/CheckBox";
-import TaskInfo from "./TaskInfo";
+import CheckBox from "../components/CheckBox";
+import TaskInfo from "../tasks/TaskInfo";
 import { Task } from "@prisma/client";
 
 const TaskList = async ({ tasks }: { tasks: Task[] }) => {
