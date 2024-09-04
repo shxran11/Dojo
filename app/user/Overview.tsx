@@ -1,11 +1,15 @@
 import { Container } from "@radix-ui/themes";
-import React from "react";
-import LatestTasks from "./LatestTasks";
+import TaskSummary from "./TaskSummary";
+import prisma from "@/prisma/client";
 
-const Overview = () => {
+const Overview = async () => {
+  const complete = await prisma.task.count({ where: { status: "COMPLETED" } });
+  const incomplete = await prisma.task.count({
+    where: { status: "INCOMPLETE" },
+  });
   return (
     <Container>
-      <LatestTasks />
+      <TaskSummary complete={complete} incomplete={incomplete} />
     </Container>
   );
 };
