@@ -20,7 +20,7 @@ const Navbar = () => {
       }}
     >
       <nav
-        className="p-4 border-t"
+        className="p-2 border-t"
         style={{ backgroundColor: "var(--accent-12)" }}
       >
         <Flex align="center" justify="between" gap="6">
