@@ -9,7 +9,7 @@ const LatestTasks = async () => {
     take: 7,
   });
   return (
-    <Card className="bg-sky-400" mt="5">
+    <Card className="bg-sky-400">
       <ScrollArea
         type="always"
         scrollbars="vertical"

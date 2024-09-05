@@ -1,7 +1,9 @@
-import { Container } from "@radix-ui/themes";
+import { Container, Flex, Grid } from "@radix-ui/themes";
 import TaskSummary from "./TaskSummary";
 import prisma from "@/prisma/client";
 import TaskChart from "./TaskChart";
+import CategoryChart from "./CategoryChart";
+import LatestTasks from "./LatestTasks";
 
 const Overview = async () => {
   const complete = await prisma.task.count({ where: { status: "COMPLETED" } });
@@ -63,18 +65,30 @@ const Overview = async () => {
   });
 
   return (
-    <Container>
-      <TaskSummary complete={complete} incomplete={incomplete} />
-      <TaskChart
-        mon={taskCounts.Mon}
-        tues={taskCounts.Tues}
-        wed={taskCounts.Wed}
-        thurs={taskCounts.Thurs}
-        fri={taskCounts.Fri}
-        sat={taskCounts.Sat}
-        sun={taskCounts.Sun}
-      />
-    </Container>
+    <Grid columns={{ initial: "1", md: "2" }} mt="5" gap="3">
+      <Flex direction="column" gap="3">
+        <TaskSummary complete={complete} incomplete={incomplete} />
+        <TaskChart
+          mon={taskCounts.Mon}
+          tues={taskCounts.Tues}
+          wed={taskCounts.Wed}
+          thurs={taskCounts.Thurs}
+          fri={taskCounts.Fri}
+          sat={taskCounts.Sat}
+          sun={taskCounts.Sun}
+        />
+      </Flex>
+      <Flex direction="column" gap="3">
+        <LatestTasks />
+        <CategoryChart
+          work={3}
+          birthday={4}
+          personal={2}
+          wishlist={5}
+          none={2}
+        />
+      </Flex>
+    </Grid>
   );
 };
 

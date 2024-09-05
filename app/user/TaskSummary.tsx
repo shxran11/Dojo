@@ -16,17 +16,19 @@ const TaskSummary = ({ complete, incomplete }: Props) => {
     { label: "Pending Tasks", value: incomplete, status: "INCOMPLETE" },
   ];
 
-  const router = useRouter();
-
   return (
-    <Flex gap="3" mt="5">
+    <Flex gap="3" justify="between">
       {statuses.map((status) => (
-        <Card key={status.status} className="bg-sky-400" size="2">
+        <Card
+          key={status.status}
+          className="bg-sky-400 sm:w-40 md:w-96"
+          size="2"
+        >
           <Flex direction="column">
             <Text align="center" weight="bold" size="5">
               {status.value}
             </Text>
-            <Text size="2" weight="medium" color="gray">
+            <Text align="center" size="2" weight="medium" color="gray">
               {status.label}
             </Text>
           </Flex>
