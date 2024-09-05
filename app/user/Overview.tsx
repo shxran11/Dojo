@@ -64,6 +64,12 @@ const Overview = async () => {
     }
   });
 
+  const work = await prisma.task.count({ where: { category: "WORK" } });
+  const personal = await prisma.task.count({ where: { category: "PERSONAL" } });
+  const birthday = await prisma.task.count({ where: { category: "BIRTHDAY" } });
+  const wishlist = await prisma.task.count({ where: { category: "WISHLIST" } });
+  const none = await prisma.task.count({ where: { category: null } });
+
   return (
     <Grid columns={{ initial: "1", md: "2" }} mt="5" gap="3">
       <Flex direction="column" gap="3">
@@ -81,11 +87,11 @@ const Overview = async () => {
       <Flex direction="column" gap="3">
         <LatestTasks />
         <CategoryChart
-          work={3}
-          birthday={4}
-          personal={2}
-          wishlist={5}
-          none={2}
+          work={work}
+          birthday={birthday}
+          personal={personal}
+          wishlist={wishlist}
+          none={none}
         />
       </Flex>
     </Grid>

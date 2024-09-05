@@ -1,15 +1,7 @@
 "use client";
 
 import { Card, Text } from "@radix-ui/themes";
-import React from "react";
-import {
-  Cell,
-  Legend,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 interface Props {
   work: number;
@@ -83,7 +75,7 @@ const CategoryChart = ({ work, personal, birthday, wishlist, none }: Props) => {
                 }}
               />
               <Text size="1" weight="medium">
-                {category.label}
+                {category.label}: {category.value}
               </Text>
             </div>
           ))}
