@@ -10,6 +10,8 @@ import { useSession } from "next-auth/react";
 const Navbar = () => {
   const { status, data: session } = useSession();
 
+  if (status === "unauthenticated") return null;
+
   return (
     <Container
       style={{
@@ -40,19 +42,6 @@ const Navbar = () => {
                   size="2"
                   referrerPolicy="no-referrer"
                 />
-              </Link>
-            </>
-          )}
-          {status === "unauthenticated" && (
-            <>
-              <Link href="/">
-                <FcTodoList className="w-6 h-6" />
-              </Link>
-              <Link href="/api/auth/signin">
-                <Pencil2Icon className="w-5 h-5" />
-              </Link>
-              <Link href="/api/auth/signin">
-                <IoPersonSharp />
               </Link>
             </>
           )}
