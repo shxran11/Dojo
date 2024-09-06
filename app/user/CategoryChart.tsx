@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Text } from "@radix-ui/themes";
+import { Card, Heading, Text } from "@radix-ui/themes";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 interface Props {
@@ -24,9 +24,9 @@ const CategoryChart = ({ work, personal, birthday, wishlist, none }: Props) => {
 
   return (
     <Card className="bg-sky-400">
-      <Text size="3" weight="medium" color="gray" mb="2">
-        Pending Tasks in Categories
-      </Text>
+      <Heading size="4" color="gray" mb="2">
+        Tasks in Categories
+      </Heading>
 
       <div style={{ display: "flex", alignItems: "center" }}>
         <ResponsiveContainer width="100%" height={150}>

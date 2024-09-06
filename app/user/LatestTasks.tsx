@@ -16,7 +16,7 @@ const LatestTasks = async () => {
         style={{ height: 180, width: "100%" }}
       >
         <Box p="2" pr="4">
-          <Heading size="5" mb="3" trim="start">
+          <Heading size="5" mb="3" trim="start" color="gray">
             Recent tasks at a glance
           </Heading>
           {tasks.map((task) => (
