@@ -1,9 +1,8 @@
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
-import { FcTodoList } from "react-icons/fc";
-import React, { ReactNode } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { Icon } from "next/dist/lib/metadata/types/metadata-types";
+import Link from "next/link";
+import { ReactNode } from "react";
+import { FcTodoList } from "react-icons/fc";
 
 const LandingPage = () => {
   return (
