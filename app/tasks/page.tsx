@@ -4,6 +4,7 @@ import NewTaskButton from "../tasks/NewTaskButton";
 import TaskList from "../tasks/TaskList";
 import { Category, Status } from "@prisma/client";
 import { Container } from "@radix-ui/themes";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: {
@@ -28,6 +29,11 @@ const TaskListPage = async ({ searchParams }: Props) => {
       <NewTaskButton />
     </Container>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Dojo - Task list",
+  description: "View all tasks",
 };
 
 export default TaskListPage;

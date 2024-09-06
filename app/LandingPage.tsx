@@ -1,4 +1,5 @@
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -158,3 +159,8 @@ function CustomizeIcon() {
     </svg>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Welcome to Dojo",
+  description: "Landing page of the app",
+};
