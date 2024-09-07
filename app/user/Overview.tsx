@@ -1,14 +1,21 @@
-import { Container, Flex, Grid } from "@radix-ui/themes";
-import TaskSummary from "./TaskSummary";
 import prisma from "@/prisma/client";
-import TaskChart from "./TaskChart";
+import { Flex, Grid } from "@radix-ui/themes";
 import CategoryChart from "./CategoryChart";
 import LatestTasks from "./LatestTasks";
+import TaskChart from "./TaskChart";
+import TaskSummary from "./TaskSummary";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/options";
 
 const Overview = async () => {
-  const complete = await prisma.task.count({ where: { status: "COMPLETED" } });
+  const session = await getServerSession(authOptions);
+  const userId = session?.user.id;
+
+  const complete = await prisma.task.count({
+    where: { status: "COMPLETED", userId },
+  });
   const incomplete = await prisma.task.count({
-    where: { status: "INCOMPLETE" },
+    where: { status: "INCOMPLETE", userId },
   });
 
   const tasks = await prisma.task.findMany({
@@ -17,6 +24,7 @@ const Overview = async () => {
       completedAt: {
         not: null,
       },
+      userId,
     },
     select: {
       completedAt: true,
@@ -64,11 +72,17 @@ const Overview = async () => {
     }
   });
 
-  const work = await prisma.task.count({ where: { category: "WORK" } });
-  const personal = await prisma.task.count({ where: { category: "PERSONAL" } });
-  const birthday = await prisma.task.count({ where: { category: "BIRTHDAY" } });
-  const wishlist = await prisma.task.count({ where: { category: "WISHLIST" } });
-  const none = await prisma.task.count({ where: { category: null } });
+  const work = await prisma.task.count({ where: { category: "WORK", userId } });
+  const personal = await prisma.task.count({
+    where: { category: "PERSONAL", userId },
+  });
+  const birthday = await prisma.task.count({
+    where: { category: "BIRTHDAY", userId },
+  });
+  const wishlist = await prisma.task.count({
+    where: { category: "WISHLIST", userId },
+  });
+  const none = await prisma.task.count({ where: { category: null, userId } });
 
   return (
     <Grid columns={{ initial: "1", md: "2" }} mt="5" gap="3">

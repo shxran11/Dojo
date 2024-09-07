@@ -5,6 +5,8 @@ import TaskList from "../tasks/TaskList";
 import { Category, Status } from "@prisma/client";
 import { Container } from "@radix-ui/themes";
 import { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/options";
 
 interface Props {
   searchParams: {
@@ -16,12 +18,20 @@ interface Props {
 const TaskListPage = async ({ searchParams }: Props) => {
   const { category } = searchParams;
 
+  const session = await getServerSession(authOptions);
+
+  const userId = session?.user.id;
+
   const tasks = await prisma.task.findMany({
-    where: category ? { category } : {},
+    where: {
+      userId,
+      ...(category ? { category } : {}),
+    },
     orderBy: {
       status: "asc",
     },
   });
+
   return (
     <Container>
       <CategoryFilter />

@@ -13,6 +13,7 @@ import {
   Tooltip,
 } from "@radix-ui/themes";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -24,6 +25,7 @@ import { ValidationSchema } from "../ValidationSchema";
 type TaskForm = z.infer<typeof ValidationSchema>;
 
 const NewTaskButton = () => {
+  const { data: session } = useSession();
   const {
     register,
     handleSubmit,
@@ -40,7 +42,9 @@ const NewTaskButton = () => {
   const saveTask = async (data: TaskForm) => {
     try {
       setSubmitting(true);
-      await axios.post("/api/tasks", data);
+      const taskData = { ...data, userId: session?.user.id };
+
+      await axios.post("/api/tasks", taskData);
       reset();
       setOpen(false);
       setSubmitting(false);

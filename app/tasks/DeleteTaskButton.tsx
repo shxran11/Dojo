@@ -8,7 +8,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 const DeleteTaskButton = ({ taskId }: { taskId: number }) => {
   const router = useRouter();
   const deleteTask = async () => {
-    await axios.delete("/api/tasks/" + taskId);
+    await axios.delete("/api/tasks/" + taskId, { withCredentials: true });
     router.refresh();
   };
   return (

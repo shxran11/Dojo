@@ -2,8 +2,6 @@
 
 import { Status } from "@prisma/client";
 import { Card, Flex, Text } from "@radix-ui/themes";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 
 interface Props {
   complete: number;
