@@ -3,6 +3,12 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]/options";
 import LandingPage from "./LandingPage";
 import TaskListPage from "./tasks/page";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Welcome to Dojo",
+  description: "Landing page of the app",
+};
 
 async function fetchSession() {
   const session = await getServerSession(authOptions);
