@@ -9,7 +9,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import React from "react";
 
 interface Props {
   mon: number;
@@ -33,29 +32,27 @@ const TaskChart = ({ mon, tues, wed, thurs, fri, sat, sun }: Props) => {
   ];
   return (
     <Card className="bg-sky-400">
-      <ResponsiveContainer
-        width="100%"
-        minHeight={300}
-        className="md:h-[348px]"
-      >
-        <BarChart data={data}>
-          <XAxis
-            dataKey="label"
-            fontSize={12}
-            angle={-30}
-            textAnchor="end"
-            interval={0}
-          />
-          <YAxis />
-          <Tooltip />
-          <Bar
-            dataKey="completed"
-            barSize={40}
-            fill="#7071E8"
-            radius={[10, 10, 10, 10]}
-          />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="sm:h-[300px] md:h-[300px]">
+        <ResponsiveContainer width="100%">
+          <BarChart data={data}>
+            <XAxis
+              dataKey="label"
+              fontSize={14}
+              angle={-30}
+              textAnchor="end"
+              interval={0}
+            />
+            <YAxis />
+            <Tooltip />
+            <Bar
+              dataKey="completed"
+              barSize={40}
+              fill="#7071E8"
+              radius={[10, 10, 10, 10]}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </Card>
   );
 };

@@ -33,11 +33,11 @@ const TaskListPage = async ({ searchParams }: Props) => {
   });
 
   return (
-    <Container>
+    <>
       <CategoryFilter />
       <TaskList tasks={tasks} />
       <NewTaskButton />
-    </Container>
+    </>
   );
 };
 

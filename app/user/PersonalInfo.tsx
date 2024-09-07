@@ -27,7 +27,7 @@ const PersonalInfo = () => {
           <Text size="7" weight="medium">
             Hi, {session?.user?.name}
           </Text>
-          <Flex gap="2" justify="center">
+          <Flex gap="2" align="center">
             <Text color="gray">{session?.user?.email}</Text>
             <Popover.Root>
               <Popover.Trigger>

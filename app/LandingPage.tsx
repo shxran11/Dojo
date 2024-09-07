@@ -33,28 +33,31 @@ const LandingPage = () => {
           <Link href="/api/auth/signin">Get Started for Free</Link>
         </Button>
         <section className="container mx-auto py-12 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <Image
-              src="/Dojo-snap1-portrait.png"
-              alt="Dojo App UI"
-              width={300}
-              height={600}
-              className="shadow-lg"
-            />
-            <Image
-              src="/Dojo-snap2-portrait.png"
-              alt="Dojo App UI"
-              width={300}
-              height={600}
-              className="shadow-lg"
-            />
-            <Image
-              src="/Dojo-snap3-portrait.png"
-              alt="Dojo App UI"
-              width={300}
-              height={600}
-              className="shadow-lg"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
+            <Flex direction="column" align="center">
+              <Image
+                src="/Dojo-snap1-portrait.png"
+                alt="Dojo App UI"
+                width={300}
+                height={500}
+              />
+            </Flex>
+            <Flex direction="column" align="center">
+              <Image
+                src="/Dojo-snap2-portrait.png"
+                alt="Dojo App UI"
+                width={300}
+                height={500}
+              />
+            </Flex>
+            <Flex direction="column" align="center">
+              <Image
+                src="/Dojo-snap3-portrait.png"
+                alt="Dojo App UI"
+                width={300}
+                height={500}
+              />
+            </Flex>
           </div>
         </section>
 

@@ -73,7 +73,7 @@ const NewTaskButton = () => {
           >
             <button
               onClick={() => setOpen(true)}
-              className="size-12 bg-blue-400 text-white px-4 py-2 rounded-full shadow-lg fixed bottom-16 right-6 sm:right-6 md:right-14 xl:right-52"
+              className="size-12 bg-blue-400 text-white px-4 py-2 rounded-full shadow-lg fixed bottom-16 right-6"
             >
               <FaPlus />
             </button>

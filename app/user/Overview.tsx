@@ -86,7 +86,7 @@ const Overview = async () => {
 
   return (
     <Grid columns={{ initial: "1", md: "2" }} mt="5" gap="3">
-      <Flex direction="column" gap="3">
+      <Flex direction="column" gap="4">
         <TaskSummary complete={complete} incomplete={incomplete} />
         <TaskChart
           mon={taskCounts.Mon}

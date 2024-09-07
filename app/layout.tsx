@@ -24,9 +24,7 @@ export default function RootLayout({
         <AuthProvider>
           <Theme accentColor="sky">
             <Navbar />
-            <main className="pl-2 pr-2 mb-12">
-              <Container>{children}</Container>
-            </main>
+            <main className="pl-2 pr-2 mb-12">{children}</main>
           </Theme>
         </AuthProvider>
       </body>

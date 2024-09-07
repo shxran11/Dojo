@@ -19,7 +19,7 @@ const DeleteTaskButton = ({ taskId }: { taskId: number }) => {
         </Button>
       </AlertDialog.Trigger>
       <AlertDialog.Content maxWidth="450px">
-        <AlertDialog.Title>Revoke access</AlertDialog.Title>
+        <AlertDialog.Title>Delete Task</AlertDialog.Title>
         <AlertDialog.Description size="2">
           Are you sure? This task will no longer be accessible.
         </AlertDialog.Description>

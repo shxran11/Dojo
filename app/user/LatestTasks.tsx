@@ -2,9 +2,15 @@ import prisma from "@/prisma/client";
 import { ScrollArea, Box, Heading, Flex, Text, Card } from "@radix-ui/themes";
 import React from "react";
 import TaskStatusBadge from "../components/TaskStatusBadge";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/options";
 
 const LatestTasks = async () => {
+  const session = await getServerSession(authOptions);
+  const userId = session?.user.id;
+
   const tasks = await prisma.task.findMany({
+    where: { userId },
     orderBy: { createdAt: "desc" },
     take: 7,
   });

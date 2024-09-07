@@ -1,11 +1,10 @@
 "use client";
 
-import { Avatar, Container, Flex, Spinner } from "@radix-ui/themes";
+import { Pencil2Icon } from "@radix-ui/react-icons";
+import { Avatar, Flex, Spinner } from "@radix-ui/themes";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { FcTodoList } from "react-icons/fc";
-import { IoPersonSharp } from "react-icons/io5";
-import { Pencil2Icon } from "@radix-ui/react-icons";
-import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const { status, data: session } = useSession();
@@ -13,7 +12,7 @@ const Navbar = () => {
   if (status === "unauthenticated") return null;
 
   return (
-    <Container
+    <div
       style={{
         position: "fixed",
         bottom: 0,
@@ -48,7 +47,7 @@ const Navbar = () => {
           {status === "loading" && <Spinner />}
         </Flex>
       </nav>
-    </Container>
+    </div>
   );
 };
 
