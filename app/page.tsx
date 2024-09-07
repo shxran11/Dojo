@@ -1,6 +1,6 @@
 // app/page.tsx (or app/index.tsx)
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "./api/auth/[...nextauth]/options";
 import LandingPage from "./LandingPage";
 import TaskListPage from "./tasks/page";
 
