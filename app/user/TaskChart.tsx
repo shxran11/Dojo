@@ -33,7 +33,7 @@ const TaskChart = ({ mon, tues, wed, thurs, fri, sat, sun }: Props) => {
   return (
     <Card className="bg-sky-400">
       <div className="sm:h-[300px] md:h-[300px]">
-        <ResponsiveContainer width="100%">
+        <ResponsiveContainer width="100%" minHeight={300}>
           <BarChart data={data}>
             <XAxis
               dataKey="label"
