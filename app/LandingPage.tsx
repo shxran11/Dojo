@@ -1,16 +1,14 @@
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { FcTodoList } from "react-icons/fc";
 
 const LandingPage = () => {
   return (
     <div className="mt-3">
-      <Flex justify="between" align="center" className="border-b pb-2">
-        <Flex align="center" gap="4">
-          <FcTodoList size={50} />
+      <Flex justify="between" align="center" className="border-b">
+        <Flex align="center" gap="3">
+          <Image src="/Dojo-logo.png" alt="Dojo-logo" width={70} height={70} />
           <Text size="7" weight="bold" color="blue">
             DOJO
           </Text>
@@ -19,70 +17,54 @@ const LandingPage = () => {
           <Link href="/api/auth/signin">Login</Link>
         </Button>
       </Flex>
-      <div className="items-center text-center">
-        <Flex align="center" direction="column" gap="3">
-          <Heading mt="5" align="center" size="8" weight="medium">
+
+      <section className="text-center mt-8">
+        <Flex align="center" direction="column" gap="4">
+          <Heading size="8" weight="medium">
             Master Your Tasks with <Text color="blue">Dojo</Text>:
           </Heading>
-          <Text align="center">
+          <Text>
             Your personal productivity trainer, designed for simplicity and
             efficiency.
           </Text>
+          <Button color="blue" size="4">
+            <Link href="/api/auth/signin">Get Started for Free</Link>
+          </Button>
         </Flex>
-        <Button color="blue" size="4" mt="5">
-          <Link href="/api/auth/signin">Get Started for Free</Link>
-        </Button>
-        <section className="container mx-auto py-12 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
-            <Flex direction="column" align="center">
-              <Image
-                src="/Dojo-snap1-portrait.png"
-                alt="Dojo App UI"
-                width={300}
-                height={500}
-              />
-            </Flex>
-            <Flex direction="column" align="center">
-              <Image
-                src="/Dojo-snap2-portrait.png"
-                alt="Dojo App UI"
-                width={300}
-                height={500}
-              />
-            </Flex>
-            <Flex direction="column" align="center">
-              <Image
-                src="/Dojo-snap3-portrait.png"
-                alt="Dojo App UI"
-                width={300}
-                height={500}
-              />
-            </Flex>
-          </div>
-        </section>
+      </section>
 
-        <section className="container mx-auto py-12 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <Feature
-              icon={<TaskIcon />}
-              title="Organize Tasks Easily"
-              description="Simplify your task management with an intuitive interface."
-            />
+      <section className="container mx-auto px-4 mt-12">
+        <Flex direction="column" align="center" justify="center">
+          <Image
+            src="/Dojo-snap7.png"
+            alt="Dojo App UI"
+            width={700}
+            height={300}
+            className="object-cover"
+          />
+        </Flex>
+      </section>
 
-            <Feature
-              icon={<ProgressIcon />}
-              title="Track Your Progress"
-              description="Stay on top of your tasks and track completion effortlessly."
-            />
+      <section className="container mx-auto py-12 px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <Feature
+            icon={<TaskIcon />}
+            title="Organize Tasks Easily"
+            description="Simplify your task management with an intuitive interface."
+          />
+          <Feature
+            icon={<ProgressIcon />}
+            title="Track Your Progress"
+            description="Stay on top of your tasks and track completion effortlessly."
+          />
+          <Feature
+            icon={<CustomizeIcon />}
+            title="Customize Your Workflow"
+            description="Tailor Dojo to fit your unique productivity style."
+          />
+        </div>
+      </section>
 
-            <Feature
-              icon={<CustomizeIcon />}
-              title="Customize Your Workflow"
-              description="Tailor Dojo to fit your unique productivity style."
-            />
-          </div>
-        </section>
-      </div>
       <footer className="py-6 text-center text-gray-600">
         <p>&copy; {new Date().getFullYear()} Dojo. All rights reserved.</p>
       </footer>
@@ -162,8 +144,3 @@ function CustomizeIcon() {
     </svg>
   );
 }
-
-export const metadata: Metadata = {
-  title: "Welcome to Dojo",
-  description: "Landing page of the app",
-};

@@ -3,10 +3,11 @@ import CategoryFilter from "../tasks/CategoryFilter";
 import NewTaskButton from "../tasks/NewTaskButton";
 import TaskList from "../tasks/TaskList";
 import { Category, Status } from "@prisma/client";
-import { Container } from "@radix-ui/themes";
+import { Container, Flex } from "@radix-ui/themes";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/options";
+import Image from "next/image";
 
 interface Props {
   searchParams: {
@@ -35,7 +36,18 @@ const TaskListPage = async ({ searchParams }: Props) => {
   return (
     <>
       <CategoryFilter />
-      <TaskList tasks={tasks} />
+      {tasks.length < 1 ? (
+        <Flex align="center" justify="center" mt="9">
+          <Image
+            src="/38622256.jpg"
+            alt="Task-image"
+            width={300}
+            height={300}
+          />
+        </Flex>
+      ) : (
+        <TaskList tasks={tasks} />
+      )}
       <NewTaskButton />
     </>
   );

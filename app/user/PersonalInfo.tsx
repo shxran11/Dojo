@@ -24,11 +24,23 @@ const PersonalInfo = () => {
           size="6"
         />
         <Flex direction="column" justify="end">
-          <Text size="7" weight="medium">
-            Hi, {session?.user?.name}
+          <Text
+            size="7"
+            weight="medium"
+            color="violet"
+            className="truncate max-w-[200px]"
+            title={session?.user?.name!}
+          >
+            Hi, {session?.user?.name?.split(" ")[0]}
           </Text>
           <Flex gap="2" align="center">
-            <Text color="gray">{session?.user?.email}</Text>
+            <Text
+              color="gray"
+              className="truncate max-w-[200px] md:max-w-[300px]"
+              title={session?.user?.email!}
+            >
+              {session?.user?.email}
+            </Text>
             <Popover.Root>
               <Popover.Trigger>
                 <ChevronDownIcon />

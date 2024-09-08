@@ -13,7 +13,7 @@ const UserPage = async () => {
   }
 
   return (
-    <div className="mb-8">
+    <div className="mb-20">
       <PersonalInfo />
       <Overview />
     </div>
